@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChilaKing — Rey del Chilaquil</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    :root {
+      --corn: #E8C84A;
+      --crown: #d8e436;
+      --corn-light: #F5E8A0;
+      --corn-dark: #B8980A;
+      --red: #f11717;
+      --brown-red: #8B3A2A;
+      --brown-red-light: #C05A3A;
+      --mex-green: #006847;
+      --mex-green-light: #1A8A5A;
+      --cream: #FDF8EC;
+      --text-dark: #2C1A0E;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--cream);
+      color: var(--text-dark);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--brown-red);
+      padding: 4rem 2rem 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 6px solid var(--corn);
+    }
+    .hero-pattern {
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      opacity: 0.07;
+      --size: 100px; 
+      --fill: 15%;       
+      --height: calc(var(--size) * 0.4);
+      background-image: 
+        linear-gradient(45deg, var(--corn) var(--fill), transparent var(--fill)), 
+        linear-gradient(-45deg, var(--corn) var(--fill), transparent var(--fill)),
+        linear-gradient(135deg, var(--corn) var(--fill), transparent var(--fill)),
+        linear-gradient(-135deg, var(--corn) var(--fill), transparent var(--fill));
+      background-position: 
+        0 0, 
+        0 0, 
+        calc(var(--size) / 2) calc(var(--height) / 2),
+        calc(var(--size) / 2) calc(var(--height) / 2); 
+
+      background-size: var(--size) var(--height);
+    }
+    .hero-badge {
+      display: inline-block;
+      background: var(--corn);
+      color: var(--brown-red);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 5px 16px;
+      border-radius: 20px;
+      margin-bottom: 1rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 70px;
+      font-weight: 700;
+      color: var(--corn);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .king {
+      font-family: 'Playfair Display', serif;
+      font-size: 70px;
+      font-weight: 700;
+      color: var(--crown);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+    .hero h2 {
+      font-size: 14px;
+      font-weight: 400;
+      color: #F5D88A;
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+    }
+    .divider {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      margin: 0.8rem 0;
+    }
+    .divider-line { width: 60px; height: 1px; background: var(--corn); opacity: 0.5; }
+    .divider-dot { width: 6px; height: 6px; background: var(--corn); border-radius: 50%; }
+    .hero-desc {
+      color: rgba(245,232,160,0.85);
+      font-size: 15px;
+      max-width: 470px;
+      margin: 0.8rem auto 0;
+      line-height: 1.8;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: var(--mex-green);
+      color: #fff;
+      padding: 13px 32px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      margin-top: 1.5rem;
+      border: none;
+      cursor: pointer;
+      font-family: 'Inter', sans-serif;
+      transition: background 0.2s;
+    }
+    .hero-cta:hover { background: var(--mex-green-light); }
+
+    /* ── SECTIONS ── */
+    .section { padding: 3rem 2rem; max-width: 900px; margin: 0 auto; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mex-green);
+      font-weight: 500;
+      margin-bottom: 0.4rem;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--brown-red);
+      margin-bottom: 1.2rem;
+    }
+    .section-intro {
+      font-size: 15px;
+      color: #5A3A20;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    /* ── ABOUT CARDS ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      margin-top: 1.8rem;
+    }
+    .about-card {
+      background: #fff;
+      border: 1.5px solid var(--corn-light);
+      border-radius: 12px;
+      padding: 1.4rem;
+      text-align: center;
+    }
+    .about-icon { font-size: 28px; margin-bottom: 0.5rem; display: block; color: var(--corn-dark); }
+    .about-card h3 { font-size: 14px; font-weight: 500; color: var(--brown-red); margin-bottom: 4px; }
+    .about-card p { font-size: 12px; color: #7A5A40; line-height: 1.5; }
+
+    /* ── MENU SECTION ── */
+    .menu-section { background: var(--brown-red); padding: 3rem 2rem; }
+    .menu-inner { max-width: 900px; margin: 0 auto; }
+    .menu-section .section-label { color: var(--corn-light); }
+    .menu-section .section-title { color: var(--corn); margin-bottom: 1.5rem; }
+
+    .menu-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.8rem; }
+    .tab {
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1.5px solid rgba(232,200,74,0.4);
+      color: var(--corn-light);
+      background: transparent;
+      font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+    .tab.active { background: var(--corn); color: var(--brown-red); border-color: var(--corn); }
+    .tab:hover:not(.active) { border-color: rgba(232,200,74,0.7); }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 14px;
+    }
+    .menu-item {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(232,200,74,0.25);
+      border-radius: 12px;
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .menu-item-info h4 { font-size: 15px; font-weight: 500; color: var(--corn); margin-bottom: 4px; }
+    .menu-item-info p { font-size: 12px; color: rgba(245,232,160,0.7); line-height: 1.4; }
+    .menu-tag {
+      background: var(--mex-green);
+      color: #fff;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+      margin-top: 6px;
+      display: inline-block;
+    }
+    .menu-tag-r {
+      background: var(--red);
+      color: #fff;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+      margin-top: 6px;
+      display: inline-block;
+    }
+    .menu-tag-m {
+      background: var(--corn);
+      color: #fff;
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 10px;
+      white-space: nowrap;
+      margin-top: 6px;
+      display: inline-block;
+    }
+    .menu-price {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--crown);
+      white-space: nowrap;
+    }
+
+    /* ── SPECIALS ── */
+    .specials-section {
+      background: var(--corn-light);
+      padding: 2.5rem 2rem;
+      border-top: 4px solid var(--corn);
+      border-bottom: 4px solid var(--corn);
+    }
+    .specials-inner { max-width: 900px; margin: 0 auto; }
+    .specials-section .section-title { color: var(--brown-red); }
+    .specials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 1rem;
+    }
+    .special-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.3rem;
+      border-left: 4px solid var(--mex-green);
+    }
+    .special-day { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: var(--mex-green); font-weight: 500; margin-bottom: 6px; }
+    .special-card h4 { font-size: 15px; font-weight: 500; color: var(--brown-red); margin-bottom: 5px; }
+    .special-card p { font-size: 12px; color: #7A5A40; line-height: 1.5; }
+
+    /* ── INFO STRIP ── */
+    .info-strip {
+      background: var(--mex-green);
+      padding: 2rem 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 16px;
+      text-align: center;
+    }
+    .info-item i { font-size: 24px; color: var(--corn); margin-bottom: 8px; display: block; }
+    .info-item strong { font-size: 13px; color: #fff; display: block; margin-bottom: 4px; }
+    .info-item p { font-size: 12px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonial-section { padding: 3rem 2rem; background: #fff; }
+    .testimonial-inner { max-width: 900px; margin: 0 auto; }
+    .testimonial-section .section-title { color: var(--brown-red); }
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-top: 1rem;
+    }
+    .testimonial {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 1.3rem;
+      border-top: 3px solid var(--corn);
+    }
+    .stars { color: var(--corn-dark); font-size: 15px; margin-bottom: 8px; }
+    .testimonial p { font-size: 13px; color: #5A3A20; line-height: 1.6; font-style: italic; }
+    .testimonial-author { font-size: 12px; font-weight: 500; color: var(--brown-red); margin-top: 10px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--text-dark);
+      padding: 2rem 2rem;
+      text-align: center;
+    }
+    footer p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 2; }
+    footer strong { color: var(--corn); font-weight: 500; }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-pattern"></div>
+    <div style="position:relative; z-index:1;">
+      <span class="hero-badge">Est. 2026 · Monterrey, N.L.</span>
+      <h1>Chila<span class="king">King</span></h1>
+      <h2>Rey del Chilaquil</h2>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-dot"></div>
+        <div class="divider-line"></div>
+      </div>
+      <p class="hero-desc">
+        Preparados con ingredientes frescos cada mañana.
+      </p>
+      <button class="hero-cta" onclick="document.getElementById('menu-sec').scrollIntoView({behavior:'smooth'})">Ver menú</button>
+    </div>
+  </header>
+
+  <!-- ABOUT -->
+<div class="section">
+  <p class="section-label">El concepto</p>
+  <p class="section-title">
+    Mas que chilaquiles, un sueño
+  </p>
+  <p class="section-intro">
+    ChilaKing nace de algo muy simple: nuestra pasión por los chilaquiles.
+    Siempre hemos creído que un buen plato de chilaquiles puede cambiarte la mañana,
+    y queríamos crear un lugar donde cada orden se sintiera especial. Nuestro sueño 
+    es llevar chilaquiles con sabor casero, excelente presentación
+    y una experiencia rápida pero memorable.
+  </p>
+  <div class="about-grid">
+    <div class="about-card">
+      <i class="ti ti-flame about-icon" aria-hidden="true"></i>
+      <h3>Salsa con personalidad</h3>
+      <p>
+        El corazón del plato. Salsa casera, abundante y con el sabor que hace volver.
+      </p>
+    </div>
+    <div class="about-card">
+      <i class="ti ti-bowl-spoon about-icon" aria-hidden="true"></i>
+      <h3>Preparado al momento</h3>
+      <p>
+        Cada orden se arma fresca para mantener textura, temperatura y rapidez.
+      </p>
+    </div>
+    <div class="about-card">
+      <i class="ti ti-sparkles about-icon" aria-hidden="true"></i>
+      <h3>Presentación limpia</h3>
+      <p>
+        Queso, crema y toppings visibles para que cada plato se vea tan bien como sabe.
+      </p>
+    </div>
+    <div class="about-card">
+      <i class="ti ti-clock-bolt about-icon" aria-hidden="true"></i>
+      <h3>Rápido y práctico</h3>
+      <p>
+        Pensado para servicio ágil, comida caliente y lista en minutos.
+      </p>
+    </div>
+  </div>
+</div>
+
+  <!-- MENU -->
+  <section class="menu-section" id="menu-sec">
+    <div class="menu-inner">
+      <p class="section-label">Lo que ofrecemos</p>
+      <p class="section-title">Nuestro menú</p>
+      <!--
+      <div class="menu-tabs">
+        <button class="tab active" onclick="showMenu('entradas', this)">Entradas</button>
+        <button class="tab" onclick="showMenu('principales', this)">Principales</button>
+        <button class="tab" onclick="showMenu('antojitos', this)">Antojitos</button>
+        <button class="tab" onclick="showMenu('bebidas', this)">Bebidas</button>
+      </div>
+    -->
+
+      <div id="menu-entradas" class="menu-grid">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Chilaquiles Sencillos</h4>
+            <p>Totopos crujientes bañados en salsa casera y acompañados de frijoles,
+            crema, queso fresco, cebolla y cilantro. Una opción clásica,
+            abundante y llena de sabor.</p>
+            <span class="menu-tag">Sala Verde</span>
+            <span class="menu-tag-r">Sala Roja</span>
+            <span class="menu-tag-m">Sala Mixta</span>
+          </div>
+          <div class="menu-price">$80</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Chilaquiles con Huevo</h4>
+            <p>Nuestros chilaquiles tradicionales coronados con un huevo estrellado
+              recién hecho. Servidos con frijoles, crema, queso fresco,
+              cebolla y cilantro.</p>
+              <span class="menu-tag">Sala Verde</span>
+              <span class="menu-tag-r">Sala Roja</span>
+              <span class="menu-tag-m">Sala Mixta</span>
+            </div>
+            <div class="menu-price">$90</div>
+          </div>
+          <div class="menu-item">
+            <div class="menu-item-info">
+              <h4>Chilaquiles con Pollo</h4>
+              <p>Totopos bañados en salsa casera con pollo desmenuzado,
+                acompañados de frijoles, crema, queso fresco,
+                cebolla y cilantro para un desayuno completo y lleno de sabor.</p>
+                <span class="menu-tag">Sala Verde</span>
+                <span class="menu-tag-r">Sala Roja</span>
+                <span class="menu-tag-m">Sala Mixta</span>
+              </div>
+          <div class="menu-price">$100</div>
+        </div>
+      </div>
+
+      <!-- PARA FUTUROS PRODUCTOS
+      <div id="menu-principales" class="menu-grid" style="display:none">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Mole negro oaxaqueño</h4>
+            <p>Pollo en mole de 32 ingredientes, arroz y tortillas de maíz</p>
+            <span class="menu-tag">Especialidad</span>
+          </div>
+          <div class="menu-price">$245</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Cabrito al pastor</h4>
+            <p>Cabrito regiomontano con frijoles charros y tortillas de harina</p>
+            <span class="menu-tag">Regio</span>
+          </div>
+          <div class="menu-price">$320</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Barbacoa de res</h4>
+            <p>Cocinada en horno de tierra, con consomé y condimentos</p>
+          </div>
+          <div class="menu-price">$280</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Enchiladas verdes</h4>
+            <p>Tortillas rellenas de pollo en salsa de tomatillo y crema</p>
+          </div>
+          <div class="menu-price">$175</div>
+        </div>
+      </div>
+
+      <div id="menu-antojitos" class="menu-grid" style="display:none">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Tacos de canasta (3 pzas)</h4>
+            <p>Papa, frijol o chicharrón en salsa roja</p>
+          </div>
+          <div class="menu-price">$75</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Tlayuda oaxaqueña</h4>
+            <p>Tortilla grande con frijoles, tasajo, quesillo y chapulines</p>
+            <span class="menu-tag">Popular</span>
+          </div>
+          <div class="menu-price">$195</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Gorditas de chicharrón</h4>
+            <p>Masa de maíz azul, chicharrón prensado y salsa roja</p>
+          </div>
+          <div class="menu-price">$85</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Tamales de rajas (2 pzas)</h4>
+            <p>Masa de elote, rajas con crema, envueltos en hoja de maíz</p>
+            <span class="menu-tag">Vegano</span>
+          </div>
+          <div class="menu-price">$90</div>
+        </div>
+      </div>
+
+      <div id="menu-bebidas" class="menu-grid" style="display:none">
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Agua de jamaica</h4>
+            <p>Flor de jamaica con piloncillo y un toque de canela</p>
+          </div>
+          <div class="menu-price">$45</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Horchata de coco</h4>
+            <p>Arroz, canela y crema de coco, endulzada naturalmente</p>
+          </div>
+          <div class="menu-price">$50</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Mezcal artesanal</h4>
+            <p>Espadín de Oaxaca, copa o caballito con sal de gusano</p>
+            <span class="menu-tag">21+</span>
+          </div>
+          <div class="menu-price">$120</div>
+        </div>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h4>Café de olla</h4>
+            <p>Café negro con canela y piloncillo, barro de Tonalá</p>
+          </div>
+          <div class="menu-price">$55</div>
+        </div>
+      </div>
+      -->
+
+    </div>
+  </section>
+
+  <!-- SPECIALS -->
+  <section class="specials-section">
+    <div class="specials-inner">
+      <!--<p class="section-label" style="color: var(--mex-green);">Solo por esta semana</p> -->
+      <p class="section-title">Promociones</p>
+      <div class="specials-grid">
+        <div class="special-card">
+          <p class="special-day">Combo: Dos Gallinas</p>
+          <h4>$170</h4>
+          <p>Compra dos chilaquiles de huevo y ahorra $10.</p>
+        </div>
+        <div class="special-card">
+          <p class="special-day">Combo: Uno y Uno</p>
+          <h4>$180</h4>
+          <p>Compra unos chilaquiles de huevo, otros de pollo y ahorra $10.</p>
+        </div>
+        <div class="special-card">
+          <p class="special-day">Combo: Dos Gallos </p>
+          <h4>$190</h4>
+          <p>Compra dos chilaquiles de pollo y ahorra $10.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INFO STRIP -->
+  <div class="info-strip">
+    <div class="info-item">
+      <i class="ti ti-clock" aria-hidden="true"></i>
+      <strong>Horario</strong>
+      <!--<p>Lun–Vie: 8am – 10pm<br>Sáb–Dom: 8am – 11pm</p>-->
+      <p>Sáb–Dom: 9am – 12pm</p>
+    </div>
+    <div class="info-item">
+      <i class="ti ti-map-pin" aria-hidden="true"></i>
+      <strong>Ubicación</strong>
+      <p>Av. Constitución 412<br>Centro, Monterrey</p>
+    </div>
+    <div class="info-item">
+      <i class="ti ti-phone" aria-hidden="true"></i>
+      <strong>Reservaciones</strong>
+      <p>81 2345-6789<br>WhatsApp disponible</p>
+    </div>
+    <div class="info-item">
+      <i class="ti ti-star" aria-hidden="true"></i>
+      <strong>Calificación</strong>
+      <p>4.8 / 5 en Google<br>5 reseñas</p>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonial-section">
+    <div class="testimonial-inner">
+      <p class="section-label">Lo que dicen nuestros clientes</p>
+      <p class="section-title">Reseñas</p>
+      <div class="testimonials">
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>
+            "El pollo estaba súper bien sazonado y la salsa fue lo mejor.
+            Se nota que cuidan mucho los ingredientes y la preparación."
+          </p>
+          <p class="testimonial-author">— Carlos T., San Pedro</p>
+        </div>
+        <div class="testimonial">
+          <div class="stars">★★★★★</div>
+          <p>
+            "Además de que los chilaquiles están buenísimos, todo se ve súper limpio y bien presentado.
+            La dinámica del inventario del día está muy original y los precios se sienten bastante justos para la calidad."
+          </p>
+          <p class="testimonial-author">— Fernanda L., Monterrey</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>ChilaKing - Rey del Chilaquil</strong></p>
+    <p>Av. Constitución 412, Centro, Monterrey, N.L. · Tel: 81 2345-6789</p>
+    <p style="margin-top:8px; font-size:11px; color:rgba(255,255,255,0.3);">© 2024 ChilaKing. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    function showMenu(section, btn) {
+      ['entradas', 'principales', 'antojitos', 'bebidas'].forEach(function(s) {
+        var el = document.getElementById('menu-' + s);
+        if (el) el.style.display = 'none';
+      });
+      document.querySelectorAll('.tab').forEach(function(t) {
+        t.classList.remove('active');
+      });
+      var target = document.getElementById('menu-' + section);
+      if (target) target.style.display = 'grid';
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
